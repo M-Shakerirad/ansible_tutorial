@@ -7,7 +7,10 @@
   - name: update repository index
     apt:
       update_cache: yes
+    when: ansible_distribution == "ubuntu"
+      
 
   - name: install apache 2.0 package
     apt: 
       name: apache2
+    when: ansible_distribution == "ubuntu"
