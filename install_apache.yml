@@ -7,10 +7,12 @@
   - name: update repository index
     apt:
       update_cache: yes
-    when: ansible_distribution == "ubuntu"
+    when: ansible_distribution == "Ubuntu"
       
 
-  - name: install apache 2.0 package
+  - name: install apache and php
     apt: 
-      name: apache2
-    when: ansible_distribution == "ubuntu"
+      name: 
+        - "{{apache_package}}"
+        - "{{php_package}}"
+    when: ansible_distribution in ["Ubuntu, Debian"]
